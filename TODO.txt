@@ -1,0 +1,20 @@
+==> To add salt in bcrypt password
+
+
+==> One important correction before production
+
+Your current credentials file is fine for learning/testing, but don't consider plaintext JWT storage production-grade.
+
+Later we should improve it to:
+
+CLI
+ │
+ ├── Windows Credential Manager
+ ├── macOS Keychain
+ └── Linux Secret Service
+
+
+==> we should make the CLI password prompt hidden
+
+==> search is not working 
+==> 

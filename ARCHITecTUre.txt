@@ -1,0 +1,138 @@
+                     ┌───────────────┐
+                     │   React Web   │
+                     └───────┬───────┘
+                             │
+                             │ REST API
+                             ▼
+                    ┌─────────────────┐
+                    │  MyGit Backend  │
+                    │                 │
+                    │ Controllers     │
+                    │ Services        │
+                    │ Models          │
+                    └───────┬─────────┘
+                            │
+              ┌─────────────┴──────────────┐
+              │                            │
+              ▼                            ▼
+       ┌─────────────┐              ┌──────────────┐
+       │   MongoDB   │              │ Backblaze B2 │
+       │             │              │              │
+       │ Users       │              │ Git objects  │
+       │ Repos       │              │ Trees        │
+       │ Metadata    │              │ Blobs        │
+       │ Permissions │              │ Commits      │
+       └─────────────┘              │ References   │
+                                    └──────▲───────┘
+                                           │
+                                           │
+                                  ┌────────┴────────┐
+                                  │    MyGit CLI    │
+                                  │                 │
+                                  │ init            │
+                                  │ add             │
+                                  │ commit          │
+                                  │ create          │
+                                  │ clone           │
+                                  │ push            │
+                                  │ pull            │
+                                  └─────────────────┘
+
+After Implement Repository Creation
+
+ItsMyGit/
+│
+├── cli/
+│   │
+│   ├── commands/
+│   │   ├── init.js
+│   │   ├── status.js
+│   │   ├── add.js
+│   │   ├── commit.js
+│   │   ├── log.js
+│   │   ├── login.js
+│   │   ├── logout.js
+│   │   ├── whoami.js
+│   │   ├── create.js
+│   │   ├── repos.js
+│   │   ├── clone.js       ← Phase 6
+│   │   ├── push.js        ← Phase 7
+│   │   └── pull.js        ← Phase 8
+│   │
+│   ├── core/
+│   │   ├── repository.js
+│   │   ├── objects.js
+│   │   ├── commit.js
+│   │   └── auth.js
+│   │
+│   └── utils/
+│       ├── api.js
+│       ├── hash.js
+│       ├── paths.js
+│       └── file.js
+│
+│
+├── backend/
+│   │
+│   ├── .env
+│   │
+│   └── src/
+│       │
+│       ├── config/
+│       │   ├── database.js
+│       │   ├── env.js
+│       │   └── b2.js
+│       │
+│       ├── models/
+│       │   ├── user.model.js
+│       │   └── repository.model.js
+│       │
+│       ├── controllers/
+│       │   ├── auth.controller.js
+│       │   ├── user.controller.js
+│       │   └── repository.controller.js
+│       │
+│       ├── services/
+│       │   ├── auth.service.js
+│       │   ├── repository.service.js
+│       │   ├── storage.service.js
+│       │   └── repository-storage.service.js
+│       │
+│       ├── routes/
+│       │   ├── auth.routes.js
+│       │   ├── user.routes.js
+│       │   └── repository.routes.js
+│       │
+│       ├── middleware/
+│       │   └── auth.middleware.js
+│       │
+│       ├── utils/
+│       │   ├── jwt.js
+│       │   └── repository-storage.js
+│       │
+│       ├── app.js
+│       └── server.js
+│       │
+│       │
+│       └───────────────┐
+│                       │
+│                       ▼
+│                   MongoDB
+│                       │
+│               Repository metadata
+│
+│
+└───────────────────────┐
+                        │
+                        ▼
+                  Backblaze B2
+                  ┌───────────────────┐
+                  │ mygit-repositories│
+                  │                   │
+                  │ repositories/     │
+                  │   repo-id/        │
+                  │     HEAD          │
+                  │     refs/         │
+                  │     objects/      │
+                  │                   │
+                  └───────────────────┘

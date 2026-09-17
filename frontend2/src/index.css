@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+  --color-canvas: #0d1117;
+  --color-canvas-subtle: #161b22;
+  --color-canvas-inset: #010409;
+
+  --color-border: #30363d;
+  --color-border-muted: #21262d;
+
+  --color-fg: #f0f6fc;
+  --color-fg-muted: #8b949e;
+  --color-fg-subtle: #6e7681;
+
+  --color-accent-green: #238636;
+  --color-accent-green-hover: #2ea043;
+
+  --color-accent-blue: #58a6ff;
+  --color-accent-blue-hover: #79b8ff;
+
+  --color-accent-orange: #f78166;
+
+  --color-success: #238636;
+  --color-warning: #d29922;
+  --color-danger: #f85149;
+
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    background-color: var(--color-canvas);
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    background-color: var(--color-canvas);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+  }
+
+  ::selection {
+    background-color: rgb(88 166 255 / 0.25);
+    color: var(--color-fg);
+  }
+
+  /* Scrollbar styling for dark theme */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-canvas);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #484f58;
+  }
+}
+
+@layer components {
+  /* Reusable card surface */
+  .card-surface {
+    background-color: var(--color-canvas-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+  }
+
+  /* Reusable input field */
+  .input-field {
+    width: 100%;
+    background-color: var(--color-canvas);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 0.5rem 0.75rem;
+    color: var(--color-fg);
+    font-size: 0.875rem;
+    outline: none;
+    transition: border-color 0.15s ease;
+  }
+
+  .input-field:focus {
+    border-color: var(--color-accent-blue);
+  }
+
+  .input-field::placeholder {
+    color: var(--color-fg-subtle);
+  }
+
+  .input-field:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}

@@ -1,0 +1,202 @@
+git blog https://dev.to/jorenrui/a-look-into-how-i-manage-my-personal-projects-my-git-github-workflow-1e7h#task-issue
+Hashing system
+    If the file changes, the hash changes.That's how we'll detect modifications.
+
+cli/utils/file.js
+    We need to find files in the user's project while ignoring .mygit.
+
+
+implement mygit status
+    check if .mygit repository exist in currect dir, untracked , modified files by comparing hash values if they match or not
+
+implement mygit add .
+    Now we need a real staging area.
+
+    Working Directory
+       │
+       │ mygit add .
+       ▼
+    index.json
+
+    The index will store:
+    {
+        "hello.txt": {
+            "hash": "some-sha1-hash"
+        }
+    }
+
+    in git add . each untracked file's hash is stored in index.js
+
+implement mygit commit -m
+    commit(args.slice(1)); args
+            ↓
+    ["commit", "-m", "Initial commit"] // to separate
+
+Phase - 2 // Autherization with commands
+    Authentication credentials => login
+        Stored globally for the user:
+            Windows:
+            C:\Users\<username>\.mygit\credentials.json
+        This means the user can access my git backend from every repository
+        CLI
+         │
+         │ POST /api/auth/login
+         ▼
+        Backend
+         │
+         ▼
+        Database
+         │
+         ▼
+        JWT/token
+         │
+         ▼
+        CLI
+         │
+         ▼
+        ~/.mygit/credentials.json
+
+authentication command line
+        We're not trusting the user information stored in credentials.json.
+
+            Instead:
+
+            credentials.json
+                  ↓
+            get token
+                  ↓
+            GET /api/users/me
+                  ↓
+            Backend verifies JWT
+                  ↓
+            MongoDB
+                  ↓
+            Current user
+
+            That's the better architecture.
+
+LOGOUT Command
+    We don't need a backend logout API yet.
+
+        JWT is currently stateless.
+
+        Logout simply means:
+
+        Delete local JWT
+
+        Later, if we implement refresh tokens or token revocation, we can add:
+        POST /api/auth/logout
+
+LOGIN COMMAND
+
+            cli/index.js
+                 │
+                 │ command = "login"
+                 ↓
+            commands/login.js
+                 │
+                 ↓
+            utils/api.js
+                 │
+                 │ HTTP POST
+                 ↓
+            http://localhost:5000/api/auth/login
+                 │
+                 ↓
+            routes/auth.routes.js
+                 │
+                 ↓
+            auth.controller.js
+                 │
+                 ↓
+            auth.service.js
+                 │
+                 ├── User.findOne()
+                 ├── bcrypt.compare()
+                 └── generateToken()
+                 │
+                 ↓
+            MongoDB
+    then:
+            Backend
+               │
+               │ JWT
+               ↓
+            CLI
+               │
+               ↓
+            ~/.mygit/credentials.json
+
+
+
+whoami Command :
+
+            mygit whoami
+                  ↓
+            commands/whoami.js
+                  ↓
+            getAuthToken()
+                  ↓
+            GET /api/users/me
+                  ↓
+            Authorization: Bearer JWT
+                  ↓
+            auth.middleware.js
+                  ↓
+            verifyToken()
+                  ↓
+            req.userId
+                  ↓
+            user.controller.js
+                  ↓
+            MongoDB
+                  ↓
+            User information
+                  ↓
+            CLI terminal
+
+
+repository Storage in B2
+
+      Step 17 — Do NOT upload the user's entire project as one B2 file
+
+            This is important.
+            Don't do:
+
+            hello-world.zip
+
+            for your Git storage architecture.
+
+            Instead:
+
+            Git repository
+                  │
+                  ├── objects
+                  ├── refs
+                  └── HEAD
+
+            That allows us to eventually transfer only the objects that are missing.
+
+            For example:
+
+            Local has: A B C
+            Remote has: A B
+            Push: only C
+
+            That's the basic idea behind efficient Git-like synchronization.
+
+Repository deletion
+      1. Find repository
+      2. Verify owner
+      3. Find all B2 objects
+      4. Delete them
+      5. Delete MongoDB repository
+        
+
+
+
+
+    
+
+
+

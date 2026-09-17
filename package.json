@@ -1,0 +1,13 @@
+{
+  "name": "mygit",
+  "version": "1.0.0",
+  "description": "A Git-like version control system built from scratch",
+  "type": "module",
+  "bin": {
+    "mygit": "./CLI/index.js",
+    "bhai": "./CLI/index.js"
+  },
+  "scripts": {
+    "start": "node cli/index.js"
+  }
+}
