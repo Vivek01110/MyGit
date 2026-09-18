@@ -90,7 +90,7 @@ export default function Sidebar({ isOpen, onClose }) {
 
         {/* Footer */}
         <div className="border-t border-border p-4">
-          <p className="text-xs font-medium text-fg-muted">VGit v1.0</p>
+          <p className="text-xs font-semibold text-fg-muted">VGIT v1.0</p>
           <p className="mt-1 text-xs text-fg-subtle">
             Git-powered code hosting platform
           </p>

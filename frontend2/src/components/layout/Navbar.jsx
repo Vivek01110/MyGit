@@ -49,8 +49,8 @@ export default function Navbar({ onMenuClick }) {
       >
         <VGitLogo size={28} className="group-hover:scale-105" />
 
-        <span className="hidden text-lg font-bold text-fg sm:block tracking-tight bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
-          VGit
+        <span className="hidden text-lg font-bold tracking-tight text-fg sm:block">
+          VGIT
         </span>
       </Link>
 

@@ -68,22 +68,22 @@ export default function Signup() {
       {/* Logo */}
       <Link
         to="/login"
-        className="mb-8 flex items-center gap-2.5 group"
+        className="mb-8 flex items-center gap-3 group"
       >
         <VGitLogo
-          size={42}
+          size={44}
           className="group-hover:scale-105"
         />
 
-        <span className="text-3xl font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent tracking-tight">
-          VGit
+        <span className="text-3xl font-bold tracking-tight text-fg">
+          VGIT
         </span>
       </Link>
 
       {/* Signup card */}
       <div className="card-surface w-full max-w-md p-6 rounded-2xl border border-border shadow-xl">
         <h1 className="mb-1 text-xl font-semibold text-fg">
-          Create your VGit account
+          Create your VGIT account
         </h1>
 
         <p className="mb-6 text-sm text-fg-muted">

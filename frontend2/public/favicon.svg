@@ -3,80 +3,65 @@
   viewBox="0 0 512 512"
   fill="none"
 >
-  <defs>
-    <linearGradient
-      id="vgit-grad"
-      x1="80"
-      y1="120"
-      x2="430"
-      y2="150"
-      gradientUnits="userSpaceOnUse"
-    >
-      <stop offset="0%" stop-color="#8B2BE2" />
-      <stop offset="25%" stop-color="#7C3AED" />
-      <stop offset="55%" stop-color="#3B82F6" />
-      <stop offset="85%" stop-color="#0091FF" />
-      <stop offset="100%" stop-color="#00C0FF" />
-    </linearGradient>
-  </defs>
-
-  <!-- Left Branch -->
-  <line
-    x1="120"
-    y1="140"
-    x2="256"
-    y2="400"
-    stroke="url(#vgit-grad)"
-    stroke-width="54"
-    stroke-linecap="round"
-  />
-
-  <!-- Right Branch -->
-  <polyline
-    points="256,400 340,275 415,155"
-    stroke="url(#vgit-grad)"
-    stroke-width="54"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  />
-
-  <!-- Top-Left Node Ring -->
-  <circle
-    cx="120"
-    cy="140"
-    r="58"
-    fill="#0d1117"
-    stroke="url(#vgit-grad)"
-    stroke-width="32"
-  />
-
-  <!-- Bottom Node Ring -->
+  <!-- Outer Circle Background & White Ring -->
   <circle
     cx="256"
-    cy="400"
-    r="58"
-    fill="#0d1117"
-    stroke="url(#vgit-grad)"
-    stroke-width="32"
+    cy="256"
+    r="244"
+    fill="#09090b"
+    stroke="#FFFFFF"
+    stroke-width="18"
   />
 
-  <!-- Mid-Right Node Ring -->
-  <circle
-    cx="340"
-    cy="275"
-    r="44"
-    fill="#0d1117"
-    stroke="url(#vgit-grad)"
+  <!-- Main Vertical Stem Line -->
+  <line
+    x1="218"
+    y1="145"
+    x2="218"
+    y2="360"
+    stroke="#FFFFFF"
     stroke-width="26"
+    stroke-linecap="round"
   />
 
-  <!-- Top-Right Node Ring -->
+  <!-- Diagonal Branch Line -->
+  <line
+    x1="218"
+    y1="340"
+    x2="338"
+    y2="235"
+    stroke="#FFFFFF"
+    stroke-width="26"
+    stroke-linecap="round"
+  />
+
+  <!-- Top Left Node -->
   <circle
-    cx="415"
-    cy="155"
-    r="58"
-    fill="#0d1117"
-    stroke="url(#vgit-grad)"
-    stroke-width="32"
+    cx="218"
+    cy="145"
+    r="40"
+    fill="#FFFFFF"
+  />
+
+  <!-- Bottom Node -->
+  <circle
+    cx="218"
+    cy="360"
+    r="44"
+    fill="#FFFFFF"
+  />
+
+  <!-- Top Right Branch Node (Ring with Black Cutout) -->
+  <circle
+    cx="338"
+    cy="235"
+    r="41"
+    fill="#FFFFFF"
+  />
+  <circle
+    cx="338"
+    cy="235"
+    r="18"
+    fill="#09090b"
   />
 </svg>

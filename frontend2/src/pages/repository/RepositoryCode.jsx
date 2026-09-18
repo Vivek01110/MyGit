@@ -373,7 +373,7 @@ export default function RepositoryCode() {
                   </button>
                 </div>
                 <p className="mt-2 text-xs text-fg-muted">
-                  Use your local MyGit CLI to clone:
+                  Use your local VGIT CLI to clone:
                 </p>
                 <div className="mt-2 flex items-center justify-between rounded bg-canvas-subtle p-2 border border-border">
                   <code className="text-xs font-mono text-accent-blue truncate">
@@ -504,7 +504,7 @@ export default function RepositoryCode() {
             This repository is empty
           </h2>
           <p className="mt-1 text-sm text-fg-muted max-w-md mx-auto">
-            Get started by creating a new file online or pushing code from your local machine with the MyGit CLI.
+            Get started by creating a new file online or pushing code from your local machine with the VGIT CLI.
           </p>
 
           <div className="mt-6 flex justify-center gap-3">
