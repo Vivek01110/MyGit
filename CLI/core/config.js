@@ -7,19 +7,19 @@ const CONFIG_FILE = path.join(os.homedir(), ".mygitconfig.json");
 export const loadConfig = () => {
   if (!fs.existsSync(CONFIG_FILE)) {
     return {
-      remoteUrl: "http://localhost:5000"
+      remoteUrl: "https://mygit-backend-04ux.onrender.com"
     };
   }
 
   try {
     const raw = fs.readFileSync(CONFIG_FILE, "utf-8");
     return {
-      remoteUrl: "http://localhost:5000",
+      remoteUrl: "https://mygit-backend-04ux.onrender.com",
       ...JSON.parse(raw)
     };
   } catch {
     return {
-      remoteUrl: "http://localhost:5000"
+      remoteUrl: "https://mygit-backend-04ux.onrender.com"
     };
   }
 };

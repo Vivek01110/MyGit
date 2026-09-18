@@ -1,4 +1,18 @@
-const BASE_URL = "/api";
+const getBaseUrl = () => {
+  const envUrl = import.meta.env.VITE_API_URL;
+  if (envUrl) {
+    const trimmed = envUrl.replace(/\/+$/, "");
+    return trimmed.endsWith("/api") ? trimmed : `${trimmed}/api`;
+  }
+  // In local development, use Vite dev proxy to localhost:5000
+  if (import.meta.env.DEV) {
+    return "/api";
+  }
+  // Default production backend on Render
+  return "https://mygit-backend-04ux.onrender.com/api";
+};
+
+const BASE_URL = getBaseUrl();
 
 export const getAuthToken = () => {
   return localStorage.getItem("token");

@@ -4,7 +4,7 @@ export const getApiUrl = () => {
   return (
     process.env.MYGIT_API_URL ||
     getConfigValue("remoteUrl") ||
-    "http://localhost:5000"
+    "https://mygit-backend-04ux.onrender.com"
   );
 };
 

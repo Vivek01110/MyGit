@@ -18,3 +18,11 @@ CLI
 
 ==> search is not working 
 ==> 
+
+==> test commandlines 
+==> file should be restore with git pull
+==> branches 
+==> we can see changes occured in file at the time of merging a pull request
+==> move profile icon to the top right
+==> i have to continue processs of deploying frontend
+https://mygit-backend-04ux.onrender.com/
