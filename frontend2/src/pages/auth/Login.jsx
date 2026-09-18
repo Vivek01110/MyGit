@@ -76,7 +76,7 @@ export default function Login() {
             onChange={(event) =>
               setEmail(event.target.value)
             }
-            placeholder="alex@example.com"
+            placeholder="reela-samson@example.com"
             icon={Mail}
             required
           />
