@@ -1,13 +1,23 @@
 {
-  "name": "mygit",
-  "version": "1.0.0",
-  "description": "A Git-like version control system built from scratch",
+  "name": "@vivek_011/vgit",
+  "version": "1.0.1",
+  "description": "A Git-like distributed version control system CLI built with Node.js",
+  "main": "CLI/index.js",
   "type": "module",
   "bin": {
-    "mygit": "./CLI/index.js",
-    "bhai": "./CLI/index.js"
+    "vgit": "CLI/index.js"
   },
-  "scripts": {
-    "start": "node cli/index.js"
-  }
+  "files": [
+    "CLI",
+    "README.md"
+  ],
+  "keywords": [
+    "git",
+    "vcs",
+    "version-control",
+    "cli",
+    "wegit"
+  ],
+  "author": "Vivek Kumar",
+  "license": "MIT"
 }

@@ -117,7 +117,7 @@ const main = async () => {
 
     default:
       console.log(
-        "MyGit - A Git-like version control system"
+        "VGIT - A distributed version control system CLI"
       );
 
       console.log();
@@ -126,34 +126,34 @@ const main = async () => {
 
       console.log();
       console.log("Local commands:");
-      console.log("  mygit init");
-      console.log("  mygit status");
-      console.log("  mygit add <file> | mygit add .");
-      console.log('  mygit commit -m "message"');
-      console.log("  mygit log");
-      console.log("  mygit branch [branch-name]");
-      console.log("  mygit checkout <branch-name> | mygit checkout -b <new-branch>");
+      console.log("  vgit init");
+      console.log("  vgit status");
+      console.log("  vgit add <file> | vgit add .");
+      console.log('  vgit commit -m "message"');
+      console.log("  vgit log");
+      console.log("  vgit branch [branch-name]");
+      console.log("  vgit checkout <branch-name> | vgit checkout -b <new-branch>");
 
       console.log();
       console.log("Configuration:");
-      console.log("  mygit config remote <server-url>    (e.g., https://mygit-api.onrender.com)");
-      console.log("  mygit config                        (view current configuration)");
+      console.log("  vgit config remote <server-url>    (e.g., https://mygit-backend-04ux.onrender.com)");
+      console.log("  vgit config                        (view current configuration)");
 
       console.log();
       console.log("Authentication:");
-      console.log("  mygit login");
-      console.log("  mygit logout");
-      console.log("  mygit whoami");
+      console.log("  vgit login");
+      console.log("  vgit logout");
+      console.log("  vgit whoami");
 
       console.log();
       console.log("Remote & Repositories:");
-      console.log("  mygit create <repository-name>");
-      console.log("  mygit repos");
-      console.log("  mygit remote add origin <repository-id>");
-      console.log("  mygit remote -v");
-      console.log("  mygit push [branch]");
-      console.log("  mygit pull [branch]");
-      console.log("  mygit clone <repository-id> [directory]");
+      console.log("  vgit create <repository-name>");
+      console.log("  vgit repos");
+      console.log("  vgit remote add origin <repository-id>");
+      console.log("  vgit remote -v");
+      console.log("  vgit push [branch]");
+      console.log("  vgit pull [branch]");
+      console.log("  vgit clone <repository-id> [directory]");
   }
 };
 
