@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { GitFork, User, Mail, Lock, AlertCircle } from "lucide-react";
+import { User, Mail, Lock, AlertCircle } from "lucide-react";
+import VGitLogo from "../../components/common/VGitLogo";
 import Button from "../../components/common/Button";
 import Input from "../../components/common/Input";
 import { useAuth } from "../../context/AuthContext";
@@ -20,60 +21,45 @@ export default function Signup() {
   const navigate = useNavigate();
   const { signup } = useAuth();
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-
-    setForm((previousForm) => ({
-      ...previousForm,
-      [name]: value,
-    }));
-  };
-
   const validate = () => {
-    const newErrors = {};
-
-    if (!form.username.trim()) {
-      newErrors.username = "Username is required";
-    }
-
-    if (!form.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(form.email)) {
-      newErrors.email = "Enter a valid email";
-    }
-
-    if (!form.password) {
-      newErrors.password = "Password is required";
-    } else if (form.password.length < 6) {
-      newErrors.password = "Password must be at least 6 characters";
-    }
-
-    if (!form.confirmPassword) {
-      newErrors.confirmPassword = "Please confirm your password";
-    } else if (form.password !== form.confirmPassword) {
-      newErrors.confirmPassword = "Passwords do not match";
-    }
-
-    return newErrors;
+    const errs = {};
+    if (!form.username.trim()) errs.username = "Username is required";
+    if (!form.email.trim()) errs.email = "Email is required";
+    else if (!/\S+@\S+\.\S+/.test(form.email))
+      errs.email = "Invalid email format";
+    if (!form.password) errs.password = "Password is required";
+    else if (form.password.length < 6)
+      errs.password = "Password must be at least 6 characters";
+    if (form.password !== form.confirmPassword)
+      errs.confirmPassword = "Passwords do not match";
+    return errs;
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+    if (errors[e.target.name]) {
+      setErrors({ ...errors, [e.target.name]: "" });
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const errs = validate();
+    if (Object.keys(errs).length > 0) {
+      setErrors(errs);
+      return;
+    }
+
+    setLoading(true);
     setServerError("");
 
-    const newErrors = validate();
-    setErrors(newErrors);
-
-    if (Object.keys(newErrors).length === 0) {
-      setLoading(true);
-      try {
-        await signup(form.username.trim(), form.email.trim(), form.password);
-        navigate("/dashboard");
-      } catch (err) {
-        setServerError(err.message || "Failed to create account. Please try again.");
-      } finally {
-        setLoading(false);
-      }
+    try {
+      await signup(form.username.trim(), form.email.trim(), form.password);
+      navigate("/dashboard");
+    } catch (err) {
+      setServerError(err.message || "Failed to create account. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -82,23 +68,22 @@ export default function Signup() {
       {/* Logo */}
       <Link
         to="/login"
-        className="mb-8 flex items-center gap-2"
+        className="mb-8 flex items-center gap-2.5 group"
       >
-        <GitFork
-          size={32}
-          aria-hidden="true"
-          className="text-fg"
+        <VGitLogo
+          size={42}
+          className="group-hover:scale-105"
         />
 
-        <span className="text-2xl font-semibold text-fg">
-          DevHub
+        <span className="text-3xl font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent tracking-tight">
+          VGit
         </span>
       </Link>
 
       {/* Signup card */}
-      <div className="card-surface w-full max-w-md p-6">
+      <div className="card-surface w-full max-w-md p-6 rounded-2xl border border-border shadow-xl">
         <h1 className="mb-1 text-xl font-semibold text-fg">
-          Create your account
+          Create your VGit account
         </h1>
 
         <p className="mb-6 text-sm text-fg-muted">

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { GitFork, Mail, Lock, AlertCircle } from "lucide-react";
+import { AlertCircle, Mail, Lock } from "lucide-react";
+import VGitLogo from "../../components/common/VGitLogo";
 import Button from "../../components/common/Button";
 import Input from "../../components/common/Input";
 import { useAuth } from "../../context/AuthContext";
@@ -11,11 +12,11 @@ export default function Login() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const navigate = useNavigate();
   const { login } = useAuth();
+  const navigate = useNavigate();
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     setError("");
     setLoading(true);
 
@@ -23,34 +24,33 @@ export default function Login() {
       await login(email, password);
       navigate("/dashboard");
     } catch (err) {
-      setError(err.message || "Failed to sign in. Please check your credentials.");
+      setError(err.message || "Invalid email or password.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-canvas px-4">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-canvas px-4 py-12">
       {/* Logo */}
       <Link
         to="/login"
-        className="mb-8 flex items-center gap-2"
+        className="mb-8 flex items-center gap-2.5 group"
       >
-        <GitFork
-          size={32}
-          aria-hidden="true"
-          className="text-fg"
+        <VGitLogo
+          size={42}
+          className="group-hover:scale-105"
         />
 
-        <span className="text-2xl font-semibold text-fg">
-          DevHub
+        <span className="text-3xl font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent tracking-tight">
+          VGit
         </span>
       </Link>
 
       {/* Login card */}
-      <div className="card-surface w-full max-w-sm p-6">
+      <div className="card-surface w-full max-w-sm p-6 rounded-2xl border border-border shadow-xl">
         <h1 className="mb-1 text-xl font-semibold text-fg">
-          Sign in to DevHub
+          Sign in to VGit
         </h1>
 
         <p className="mb-6 text-sm text-fg-muted">
@@ -107,7 +107,7 @@ export default function Login() {
 
       {/* Signup link */}
       <p className="mt-6 text-sm text-fg-muted">
-        New to DevHub?{" "}
+        New to VGit?{" "}
         <Link
           to="/signup"
           className="text-accent-blue hover:underline"

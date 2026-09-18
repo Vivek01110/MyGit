@@ -292,7 +292,7 @@ export default function Profile() {
                   id: 4,
                   type: "issue",
                   text: "opened an issue in",
-                  target: "DevHub-core",
+                  target: "VGit-core",
                   time: "Last week"
                 }
               ]).map((act) => (

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { GitFork, Mail, CheckCircle } from "lucide-react";
+import { Mail, CheckCircle } from "lucide-react";
+import VGitLogo from "../../components/common/VGitLogo";
 import Button from "../../components/common/Button";
 import Input from "../../components/common/Input";
 
@@ -14,24 +15,23 @@ export default function ForgotPassword() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-canvas px-4">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-canvas px-4 py-8">
       {/* Logo */}
       <Link
         to="/login"
-        className="mb-8 flex items-center gap-2"
+        className="mb-8 flex items-center gap-2.5 group"
       >
-        <GitFork
-          size={32}
-          aria-hidden="true"
-          className="text-fg"
+        <VGitLogo
+          size={42}
+          className="group-hover:scale-105"
         />
 
-        <span className="text-2xl font-semibold text-fg">
-          DevHub
+        <span className="text-3xl font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent tracking-tight">
+          VGit
         </span>
       </Link>
 
-      <div className="card-surface w-full max-w-sm p-6">
+      <div className="card-surface w-full max-w-sm p-6 rounded-2xl border border-border shadow-xl">
         {submitted ? (
           <div className="py-4 text-center">
             <CheckCircle

@@ -6,9 +6,9 @@ import {
   Menu,
   LogOut,
   User,
-  GitFork,
   LogIn
 } from "lucide-react";
+import VGitLogo from "../common/VGitLogo";
 import { useAuth } from "../../context/AuthContext";
 
 export default function Navbar({ onMenuClick }) {
@@ -45,12 +45,12 @@ export default function Navbar({ onMenuClick }) {
       {/* Logo */}
       <Link
         to="/dashboard"
-        className="flex shrink-0 items-center gap-2"
+        className="flex shrink-0 items-center gap-2.5 group"
       >
-        <GitFork size={24} className="text-fg" />
+        <VGitLogo size={28} className="group-hover:scale-105" />
 
-        <span className="hidden text-lg font-semibold text-fg sm:block">
-          DevHub
+        <span className="hidden text-lg font-bold text-fg sm:block tracking-tight bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
+          VGit
         </span>
       </Link>
 
