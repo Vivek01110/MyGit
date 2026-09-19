@@ -16,11 +16,11 @@ CLI
 
 ==> we should make the CLI password prompt hidden
 
-==> search is not working 
+
 ==> 
 
 ==> test commandlines 
-==> file should be restore with git pull
+==> file should be restore with git pull // not needed
 ==> branches 
 ==> we can see changes occured in file at the time of merging a pull request
 

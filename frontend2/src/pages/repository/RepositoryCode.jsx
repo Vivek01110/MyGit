@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import Button from "../../components/common/Button";
 import Input from "../../components/common/Input";
+import CodeViewer from "../../components/repository/CodeViewer";
 import api from "../../services/api";
 
 export default function RepositoryCode() {
@@ -490,9 +491,10 @@ export default function RepositoryCode() {
                 <span>Loading content from storage...</span>
               </div>
             ) : (
-              <pre className="overflow-x-auto rounded bg-canvas p-4 font-mono text-xs leading-relaxed text-fg">
-                {fileContent}
-              </pre>
+              <CodeViewer
+                filename={selectedFile.path || selectedFile.name}
+                content={fileContent}
+              />
             )}
           </div>
         </div>
@@ -560,13 +562,14 @@ export default function RepositoryCode() {
 
       {/* README Preview (if present and not currently viewing another file) */}
       {!selectedFile && readmeContent && (
-        <div className="card-surface mt-6 overflow-hidden">
-          <div className="border-b border-border bg-canvas-subtle px-4 py-2.5 text-xs font-medium text-fg flex items-center gap-2">
+        <div className="mt-6">
+          <div className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-fg-muted">
             <FileText size={14} /> README.md
           </div>
-          <div className="p-5 font-mono text-xs leading-relaxed text-fg whitespace-pre-wrap">
-            {readmeContent}
-          </div>
+          <CodeViewer
+            filename="README.md"
+            content={readmeContent}
+          />
         </div>
       )}
 
